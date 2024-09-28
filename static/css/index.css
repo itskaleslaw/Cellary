@@ -22,3 +22,21 @@ body {
 .confirm-message {
     list-style: none;
 }
+.card-image-top {
+    max-width: 100%;
+    background-color: #bfd1bfe4;
+    color: #bfd1bfe4
+   
+}
+.custom-text{
+    color: black;
+}
+.display-card {
+    border: solid 1px #333;
+  
+}
+  
+   .nav-link {
+    display:block;
+    padding:15px
+ }
