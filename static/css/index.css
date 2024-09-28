@@ -5,6 +5,7 @@ body {
 }
 .logo {
     max-width: 30%;
+    padding: 10px;
 }
 *, body {
     background-color: #d9e9d9;
@@ -13,4 +14,11 @@ body {
 }
 .navbar {
     justify-content: center;
+}
+.header-title {
+    padding: 15px;
+    padding-left: 0px;
+}
+.confirm-message {
+    list-style: none;
 }

@@ -21,12 +21,21 @@
     <li class="nav-item">
         <a class="nav-link" href="inventory">Inventory</a>
     </li>
-    <li class="nav-item active">
-        <a class="nav-link active" data-toggle="pill" href="recipes">Recipes</a>
-    </li>
     <li class="nav-item">
-        <a class="nav-link" href="about">About</a>
+        <a class="nav-link" href="recipes">Recipes</a>
     </li>
-</ul>
+    <li class="nav-item active">
+        <a class="nav-link active" data-toggle="pill" href="about">About</a>
+    </li>
+  </ul>
+  <div class="container">
+    <h1 class="header-title">About Cellary</h1>
+    <p>
+        Cellary is a Flask-based web application that uses image detection to identify groceries in an image. It can help users keep track of their groceries and shows the ingredients that are available in the user's inventory when viewing a recipe.
+    </p>
+    <p>
+        The application uses a pre-trained model and Roboflow Influence to detect groceries in an image. The detected groceries are then displayed to the user, along with the quantity of each item, and added to the user's inventory. The user also has the option to manually add items to the inventory.
+    </p>
+  </div>
 </body>
 </html>
