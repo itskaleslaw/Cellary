@@ -12,26 +12,24 @@
     <title>Detected Groceries</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="inventory">Inventory</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="recipes">Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-          </ul>
-        </div>
-    </nav> 
-    <div class="container">
+    <div class="d-flex justify-content-center">
         <img src="{{ url_for('static', filename='images/cellary logo.png') }}" alt="Cellary Logo" class="logo">
+    </div>
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link active" data-toggle="pill" href="inventory">Inventory</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Recipes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+    </ul>
+    <div class="container">
         <h1>Detected Groceries</h1>
         
         {% if result %}
