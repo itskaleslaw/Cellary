@@ -18,13 +18,13 @@ MODEL_ID = "grocery-product-detection-s9z8d/1"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    textResult = ""
     result = None
     if request.method == "POST":
         file = request.files['file']
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
         result = CLIENT.infer(file_path, model_id=MODEL_ID)
-        textResult = ""
         for pred in result['predictions']:
             textResult += f"{pred['class']}: {pred['confidence']}\n"
     return render_template('index.html', result=textResult)
