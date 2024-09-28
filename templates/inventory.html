@@ -16,7 +16,22 @@
         {% if result %}
             <ul class="grocery-list">
                 {% for item, details in result.items() %}
+<<<<<<< Updated upstream
                     <li>{{ item }}: Quantity: {{ details.count }}, Confidence: {{ details.confidence | round(2) }}</li>
+=======
+                    <li>{{ item }}: Quantity: {{ details.count }}</li>
+                    <button class="btn btn-sm btn-secondary editBtn" data-item="{{ item }}">Edit</button>
+                    <div class="editForm" style="display: none;">
+                        <form method="POST" action="/edit_item">
+                            <input type="hidden" name="item" value="{{ item }}">
+                            <div class="form-group">
+                                <label for="quantity">New Quantity:</label>
+                                <input type="number" name="quantity" required class="form-control" value="{{ details.count }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+>>>>>>> Stashed changes
                 {% endfor %}
             </ul>
         {% else %}

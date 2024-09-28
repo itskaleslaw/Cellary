@@ -47,11 +47,30 @@ def index():
 
     return render_template('index.html')
 
-@app.route("/inventory")
+@app.route("/inventory", methods=["POST"])
 def inventory():
     # Retrieve detected items from session
     detected_items = session.get('detected_items', {})
+    if request.method=="POST":
+        item = request.form['item']
+        new_quantity = int(request.form['quantity'])
+        if item in detected_items:
+            detected_items[item]['count'] = new_quantity
+        session['detected_items'] = detected_items
+        return redirect(url_for('inventory'))
+    
     return render_template('inventory.html', result=detected_items)
 
+<<<<<<< Updated upstream
+=======
+@app.route("/recipes")
+def recipes():
+    return render_template('recipes.html')
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
+    
+>>>>>>> Stashed changes
 if __name__ == "__main__":
     app.run(debug=True)
