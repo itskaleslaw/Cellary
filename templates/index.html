@@ -9,17 +9,17 @@
 </head>
 <body>
     <div class="container">
-      <button class = "btn btn-primary">Testing</button>
+        <button class="btn btn-primary">Testing</button>
         <h1>Object Detections</h1>
         <p>Please upload an image of the groceries you want to detect!</p>
         <form method="POST" enctype="multipart/form-data" class="upload-form">
             <input type="file" name="file" required aria-label="Upload your groceries image">
-            <button type="submit" class="upload-button">Upload Groceries</button>
+            <button type="submit" class="btn btn-primary upload-button">Upload Groceries</button>
         </form>
 
         <!-- Button to go to inventory page if a file has been uploaded -->
         {% if session.get('detected_items') %}
-            <a href="{{ url_for('inventory') }}" class="inventory-button">Go to Inventory</a>
+            <a href="{{ url_for('inventory') }}" class="btn btn-success inventory-button">Go to Inventory</a>
         {% endif %}
     </div>
 </body>
