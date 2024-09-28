@@ -2,3 +2,11 @@ body {
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
 }
+.logo {
+    max-width: 30%;
+}
+*, body {
+    background-color: #d9e9d9;
+    margin: 0;
+    padding: 0;
+}

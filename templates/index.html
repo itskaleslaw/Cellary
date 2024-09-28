@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     <div class="container">
-        <button class="btn btn-primary">Testing</button>
-        <h1>Object Detections</h1>
+        <img src="{{ url_for('static', filename='images/cellary logo.png') }}" alt="Cellary Logo" class="logo">
+        <h1>Image Detection</h1>
         <p>Please upload an image of the groceries you want to detect!</p>
         <form method="POST" enctype="multipart/form-data" class="upload-form">
             <input type="file" name="file" required aria-label="Upload your groceries image">
