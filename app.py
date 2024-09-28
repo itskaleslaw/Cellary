@@ -21,13 +21,11 @@ MODEL_ID = "grocery-product-detection-s9z8d/1"
 detected_items = {}
 @app.route("/", methods=["GET", "POST"])
 def index():
-      # Dictionary to hold detected items
     if request.method == "POST":
         file = request.files['file']
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-        file.save(file_path)  # Save the uploaded file
+        file.save(file_path)
 
-        # Get predictions from the model
         result = CLIENT.infer(file_path, model_id=MODEL_ID)
 
         if 'predictions' in result and isinstance(result['predictions'], list):
@@ -35,14 +33,12 @@ def index():
                 item = pred['class']
                 confidence = pred['confidence']
                 if item in detected_items:
-                    detected_items[item]['count'] += 1  # Increment count if already detected
+                    detected_items[item]['count'] += 1
                 else:
                     detected_items[item] = {'count': 1, 'confidence': confidence}
 
-        # Store detected items in session to be accessed later
         session['detected_items'] = detected_items
-        
-        # Redirect to the index page where users can click the button to see inventory
+
         return redirect(url_for('index'))
 
     return render_template('index.html')
