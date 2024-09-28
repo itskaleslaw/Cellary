@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Detected Groceries</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Detected Groceries</h1>
+        
+        {% if result %}
+            <ul class="grocery-list">
+                {% for item, details in result.items() %}
+                    <li>{{ item }}: Quantity: {{ details.count }}, Confidence: {{ details.confidence | round(2) }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-items-message">No groceries detected. Please try again.</p>
+        {% endif %}
+        
+        <a href="/" class="upload-link">Upload Another Image</a>
+    </div>
+</body>
+</html>
