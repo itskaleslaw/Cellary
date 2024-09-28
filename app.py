@@ -48,6 +48,9 @@ def inventory():
     # Retrieve detected items from session
     detected_items = session.get('detected_items', {})
     return render_template('inventory.html', result=detected_items)
+@app.route("/recipes")
+def recipes():
+    return render_template('recipes.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
