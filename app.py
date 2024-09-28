@@ -21,32 +21,51 @@ temporary_items = {}
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    detected_items = session.get('detected_items', {})
     temporary_items = {}
+    confirm_message_manual = ""
     if request.method == "POST":
-        file = request.files['file']
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-        file.save(file_path)
+        if 'file' in request.files:
+            file = request.files['file']
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(file_path)
 
-        result = CLIENT.infer(file_path, model_id=MODEL_ID)
+            result = CLIENT.infer(file_path, model_id=MODEL_ID)
 
-        if 'predictions' in result and isinstance(result['predictions'], list):
-            for pred in result['predictions']:
-                item = pred['class']
-                confidence = pred['confidence']
-                if item in detected_items:
-                    detected_items[item]['count'] += 1
-                else:
-                    detected_items[item] = {'count': 1, 'confidence': confidence}
-                
-                if item in temporary_items:
-                    temporary_items[item]['count'] += 1
-                else:
-                    temporary_items[item] = {'count': 1, 'confidence': confidence}
+            if 'predictions' in result and isinstance(result['predictions'], list):
+                for pred in result['predictions']:
+                    item = pred['class']
+                    confidence = pred['confidence']
+                    if item in detected_items:
+                        detected_items[item]['count'] += 1
+                    else:
+                        detected_items[item] = {'count': 1, 'confidence': confidence}
+                    
+                    if item in temporary_items:
+                        temporary_items[item]['count'] += 1
+                    else:
+                        temporary_items[item] = {'count': 1, 'confidence': confidence}
 
-        session['detected_items'] = detected_items
-        session['temporary_items'] = temporary_items
+            session['detected_items'] = detected_items
+            session['temporary_items'] = temporary_items
 
-        return redirect(url_for('index'))
+            return render_template('index.html', result=temporary_items)
+
+        else:
+            item = request.form['manual_items']
+            detected_items = session.get('detected_items', {})
+            manual_quantity = int(request.form.get('manual_quantity', 1))
+            
+            if item in detected_items:
+                detected_items[item]['count'] += manual_quantity
+            else:
+                detected_items[item] = {'count': manual_quantity, 'confidence': 1.0}
+            
+            confirm_message_manual = f"Added {manual_quantity} of {item} to the inventory."
+
+            session['detected_items'] = detected_items
+
+            return render_template('index.html', result="blank", confirm_message_manual=confirm_message_manual)
 
     temporary_items = session.get('temporary_items', {})
     return render_template('index.html', result=temporary_items)
