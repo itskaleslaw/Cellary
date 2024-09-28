@@ -9,6 +9,24 @@
     <title>Detected Groceries</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="inventory">Inventory</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+          </ul>
+        </div>
+    </nav> 
     <div class="container">
         <img src="{{ url_for('static', filename='images/cellary logo.png') }}" alt="Cellary Logo" class="logo">
         <h1>Detected Groceries</h1>
@@ -16,7 +34,7 @@
         {% if result %}
             <ul class="grocery-list">
                 {% for item, details in result.items() %}
-                    <li>{{ item }}: Quantity: {{ details.count }}, Confidence: {{ details.confidence | round(2) }}</li>
+                    <li>{{ item }}: Quantity: {{ details.count }}</li>
                 {% endfor %}
             </ul>
         {% else %}
