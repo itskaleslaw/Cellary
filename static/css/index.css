@@ -18,7 +18,34 @@ body {
 .header-title {
     padding: 15px;
     padding-left: 0px;
+    text-decoration: underline;
 }
 .confirm-message {
     list-style: none;
+}
+.card-image-top {
+    max-width: 100%;
+    background-color: #bfd1bfe4;
+    color: #bfd1bfe4;
+}
+.custom-text {
+    color: black;
+}
+.display-card {
+    border: solid 1px #333;
+}
+.nav-link {
+    display: block;
+    padding: 15px;
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn {
+    background-image: linear-gradient(to right, #4994db, #65b16b) !important;
+    color: #ffffff !important;
+    border: 0px !important;
+}
+.card-container {
+    margin: 20px;
+}
+.card-body, .card-title, .card-text, .card-body form, .card-body form label {
+    background-color: #bfd1bf;
 }

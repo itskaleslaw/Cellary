@@ -29,7 +29,7 @@
             <a class="nav-link" href="about">About</a>
         </li>
     </ul>
-    <div class="container">
+    <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 20px; margin: 10px; border-radius: 20px;">
         <h1 class="header-title">Detected Groceries</h1>
         <form method="POST">
             <label for="food">Food:</label>
@@ -45,10 +45,8 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="no-items-message">No groceries detected. Please try again.</p>
-        {% endif %}
         
-        <a href="/" class="upload-link">Upload Another Image</a>
+        <a href="/" class="upload-link">Upload More Groceries</a>
     </div>
 </body>
 </html>

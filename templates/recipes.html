@@ -13,7 +13,7 @@
 <body>
   <div class="d-flex justify-content-center">
     <img src="{{ url_for('static', filename='images/cellary logo.png') }}" alt="Cellary Logo" class="logo">
-</div>
+  </div>
   <ul class="nav nav-pills justify-content-center">
     <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
@@ -22,11 +22,77 @@
         <a class="nav-link" href="inventory">Inventory</a>
     </li>
     <li class="nav-item active">
-        <a class="nav-link active" data-toggle="pill" href="recipes">Recipes</a>
+        <a class="nav-link active" href="recipes" data-toggle="pill">Recipes</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="about">About</a>
     </li>
 </ul>
+<div class="card-container" style="display: flex; gap: 20px; justify-content: center;">
+  <div class="card" style="max-width: 15%;">
+    <img src="https://natashaskitchen.com/wp-content/uploads/2020/01/Chicken-Marsala-3.jpg">
+    <div class="card-body">
+      <h5 class="card-title">Chicken Marsala</h5>
+      <p class="card-text">Ingredients:</p>
+      <form>
+        <label><input type="checkbox" name="ingredient" value="Chicken breast"> Chicken breast</label><br>
+        <label><input type="checkbox" name="ingredient" value="Salt"> Salt</label><br>
+        <label><input type="checkbox" name="ingredient" value="Black pepper"> Black pepper</label><br>
+        <label><input type="checkbox" name="ingredient" value="Olive oil"> Olive oil</label><br>
+        <label><input type="checkbox" name="ingredient" value="Unsalted butter"> Unsalted butter</label><br>
+        <label><input type="checkbox" name="ingredient" value="Brown button mushrooms"> Brown button mushrooms</label><br>
+        <label><input type="checkbox" name="ingredient" value="Onion powder"> Onion powder</label><br>
+        <label><input type="checkbox" name="ingredient" value="All purpose flour"> All purpose flour</label><br>
+        <label><input type="checkbox" name="ingredient" value="Dry marsala wine"> Dry marsala wine</label><br>
+        <label><input type="checkbox" name="ingredient" value="Chicken stock"> Chicken stock</label><br>
+        <label><input type="checkbox" name="ingredient" value="Heavy whipping cream"> Heavy whipping cream</label><br>
+      </form>
+      <a href="https://natashaskitchen.com/chicken-marsala-recipe/" target="_blank" class="btn btn-primary nav-link">Go</a>
+    </div>
+  </div>
+
+  <div class="card" style="max-width: 15%;">
+    <img src="https://inbloombakery.com/wp-content/uploads/2021/09/pumpkin-cookies-22.jpg" class="card-img-top" alt="Chewy Pumpkin Cookies">
+    <div class="card-body">
+      <h5 class="card-title">Chewy Pumpkin Cookies</h5>
+      <p class="card-text">Ingredients:</p>
+      <form>
+        <label><input type="checkbox" name="ingredient" value="White sugar"> White sugar</label><br>
+        <label><input type="checkbox" name="ingredient" value="Pumpkin pie spice"> Pumpkin pie spice</label><br>
+        <label><input type="checkbox" name="ingredient" value="Unsalted butter"> Unsalted butter</label><br>
+        <label><input type="checkbox" name="ingredient" value="Light brown sugar"> Light brown sugar</label><br>
+        <label><input type="checkbox" name="ingredient" value="Eggs"> Eggs</label><br>
+        <label><input type="checkbox" name="ingredient" value="Vanilla"> Vanilla</label><br>
+        <label><input type="checkbox" name="ingredient" value="Canned pumpkin"> Canned pumpkin</label><br>
+        <label><input type="checkbox" name="ingredient" value="All purpose flour"> All purpose flour</label><br>
+        <label><input type="checkbox" name="ingredient" value="Baking soda"> Baking soda</label><br>
+        <label><input type="checkbox" name="ingredient" value="Baking powder"> Baking powder</label><br>
+        <label><input type="checkbox" name="ingredient" value="Salt"> Salt</label><br>
+      </form>
+      <a href="https://inbloombakery.com/chewy-pumpkin-cookies/" target="_blank" class="btn btn-primary nav-link">Go</a>
+    </div>
+  </div>
+
+  <div class="card" style="max-width: 15%;">
+    <img src="https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg" class="card-img-top" alt="Caesar Salad">
+    <div class="card-body">
+      <h5 class="card-title">Caesar Salad</h5>
+      <p class="card-text">Ingredients:</p>
+      <form>
+        <label><input type="checkbox" name="ingredient" value="Romaine lettuce"> Romaine lettuce</label><br>
+        <label><input type="checkbox" name="ingredient" value="Parmesan cheese"> Parmesan cheese</label><br>
+        <label><input type="checkbox" name="ingredient" value="Garlic">Garlic</label><br>
+        <label><input type="checkbox" name="ingredient" value="Worcestershire sauce"> Worcestershire sauce</label><br>
+        <label><input type="checkbox" name="ingredient" value="Black pepper"> Black pepper</label><br>
+        <label><input type="checkbox" name="ingredient" value="Lemon juice"> Lemon juice</label><br>
+        <label><input type="checkbox" name="ingredient" value="Extra virgin olive oil"> Extra virgin olive oil</label><br>
+        <label><input type="checkbox" name="ingredient" value="Sea salt"> Sea salt</label><br>
+        <label><input type="checkbox" name="ingredient" value="French baguette"> French baguette</label><br>
+      </form>
+      <a href="https://natashaskitchen.com/caesar-salad-recipe/" target="_blank" class="btn btn-primary nav-link">Go</a>
+    </div>
+  </div>
+</div>
+</div>
 </body>
 </html>

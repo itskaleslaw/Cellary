@@ -29,28 +29,38 @@
         </li>
     </ul>
     <div class="container">
-        <h1 class="header-title">Image Detection</h1>
-        <p>Please upload an image of the groceries you want to detect!</p>
-        <form method="POST" enctype="multipart/form-data" class="upload-form">
-            <input type="file" name="file" required aria-label="Upload your groceries image"><br><br>
-            <button type="submit" class="btn btn-primary upload-button">Upload Groceries</button>
-        </form>
-        <br>
-        {% if result %}
-            <ul class="confirm-message">
-                {% for item, details in result.items() %}
-                    <li>{{ details.count }} of {{ item }} detected with {{ details.confidence }} confidence.</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="no-items-message">No groceries detected. Please try again.</p>
-        {% endif %}
-        <h1 class="header-title">Manual Upload</h1>
-
-        <!-- Button to go to inventory page if a file has been uploaded -->
-        {% if session.get('detected_items') %}
-            <a href="{{ url_for('inventory') }}" class="btn btn-success inventory-button">Go to Inventory</a>
-        {% endif %}
+        <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 10px; margin: 10px; border-radius: 20px;">
+            <h1 class="header-title">Image Detection</h1>
+            <p>Please upload an image of the groceries you want to detect!</p>
+            <form method="POST" enctype="multipart/form-data" class="upload-form">
+                <input type="file" name="file" required aria-label="Upload your groceries image"><br><br>
+                <button type="submit" class="btn btn-primary upload-button">Upload Groceries</button>
+            </form>
+            <br>
+            {% if result != "blank" %}
+                {% if result and result != "blank" %}
+                <ul class="confirm-message">
+                    {% for item, details in result.items() %}
+                        <li>{{ details.count }} of {{ item }} detected with {{ details.confidence }} confidence.</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                    <p class="no-items-message">No groceries detected. Please try again.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 10px; margin: 10px; border-radius: 20px;">
+            <h1 class="header-title">Manual Upload</h1>
+            <p>Alternatively, you can manually enter the groceries you have.</p>
+            <form method="POST" class="manual_upload_form">
+                <input type="text" name="manual_items" placeholder="Enter groceries" required aria-label="Enter groceries">
+                <input type="number" name="manual_quantity" min="1" value="1"><br><br>
+                <button type="submit" class="btn btn-primary upload-button">Confirm Groceries</button>
+            </form><br>
+            <p>{{ confirm_message_manual }}</p>
+        </div>
+        <a href="{{ url_for('inventory') }}" class="btn btn-success inventory-button">Go to Inventory</a>
     </div>
+    <br>
 </body>
 </html>
