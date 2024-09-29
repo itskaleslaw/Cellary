@@ -31,11 +31,17 @@
     </ul>
     <div class="container">
         <h1 class="header-title">Detected Groceries</h1>
-        
+        <form method="POST">
+            <label for="food">Food:</label>
+            <input type="text" id="food" name="food">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity">
+            <input type="submit">
+        </form>
         {% if result %}
             <ul class="grocery-list">
-                {% for item, details in result.items() %}
-                    <li>{{ item }}: Quantity: {{ details.count }}</li>
+                {% for item in result %}
+                    <li>{{ item }}: Quantity: {{ result.get(item) }}</li>
                 {% endfor %}
             </ul>
         {% else %}
