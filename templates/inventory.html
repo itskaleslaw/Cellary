@@ -29,7 +29,7 @@
             <a class="nav-link" href="about">About</a>
         </li>
     </ul>
-    <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 20px; margin: 10px; border-radius: 20px;">
+    <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 20px; margin: 10px auto; border-radius: 20px; max-width: 900px;">
         <h1 class="header-title">Detected Groceries</h1>
         <form method="POST">
             <label for="food">Food:</label>
@@ -44,7 +44,7 @@
                     <li>{{ item }}: Quantity: {{ result.get(item) }}</li>
                 {% endfor %}
             </ul>
-        {% else %}
+        {% endif %}
         
         <a href="/" class="upload-link">Upload More Groceries</a>
     </div>

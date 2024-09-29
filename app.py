@@ -93,7 +93,6 @@ def inventory():
         print(inventory_items.get(name))
         detected_items = {}
     detected_items = {}
-    temporary_items = {}
     return render_template('inventory.html', result=inventory_items)
 
 @app.route("/recipes")
