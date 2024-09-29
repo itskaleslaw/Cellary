@@ -16,6 +16,7 @@ CLIENT = InferenceHTTPClient(
 )
 
 MODEL_ID = "grocery-product-detection-s9z8d/1"
+inventory_items = {}
 detected_items = {}
 temporary_items = {}
 
@@ -70,10 +71,30 @@ def index():
     temporary_items = session.get('temporary_items', {})
     return render_template('index.html', result=temporary_items)
 
-@app.route("/inventory")
+@app.route("/inventory", methods=["GET", "POST"])
 def inventory():
     detected_items = session.get('detected_items', {})
-    return render_template('inventory.html', result=detected_items)
+    session['detected_items'] = {}
+    for item in detected_items.keys():
+        if item in inventory_items.keys():
+            value = detected_items.get(item).get('count') + inventory_items.get(item)
+            inventory_items.update({item: value})
+        else:
+            inventory_items.update({item: detected_items.get(item).get('count')})
+        print(inventory_items.get(item))
+    if request.method == "POST":
+        name = request.form.get('food')
+        num = int(request.form.get('quantity'))
+        if name in inventory_items.keys():
+            value = num + inventory_items.get(name)
+            inventory_items.update({name: value})
+        else:
+            inventory_items.update({name: num})
+        print(inventory_items.get(name))
+        detected_items = {}
+    detected_items = {}
+    temporary_items = {}
+    return render_template('inventory.html', result=inventory_items)
 
 @app.route("/recipes")
 def recipes():
