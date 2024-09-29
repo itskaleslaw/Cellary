@@ -87,9 +87,13 @@ def inventory():
         num = int(request.form.get('quantity'))
         if name in inventory_items.keys():
             value = num + inventory_items.get(name)
-            inventory_items.update({name: value})
+            if value <= 0:
+                inventory_items.pop(name)
+            else:
+                inventory_items.update({name: value})
         else:
-            inventory_items.update({name: num})
+            if num > 0:
+                inventory_items.update({name: num})
         print(inventory_items.get(name))
         detected_items = {}
     detected_items = {}
