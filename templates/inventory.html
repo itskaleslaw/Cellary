@@ -30,19 +30,20 @@
         </li>
     </ul>
     <div class="container">
-        <h1 class="header-title">Detected Groceries</h1>
-        
-        {% if result %}
-            <ul class="grocery-list">
-                {% for item, details in result.items() %}
-                    <li>{{ item }}: Quantity: {{ details.count }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="no-items-message">No groceries detected. Please try again.</p>
-        {% endif %}
-        
-        <a href="/" class="upload-link">Upload More Groceries</a>
+        <div class="image-detection" style="border: 5px solid rgb(82, 110, 66); padding: 20px; margin: 10px; border-radius: 20px;">
+            <h1 class="header-title">Detected Groceries</h1>
+            {% if result %}
+                <ul class="grocery-list">
+                    {% for item, details in result.items() %}
+                        <li>{{ item }}: Quantity: {{ details.count }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-items-message">No groceries detected. Please try again.</p>
+            {% endif %}
+            
+            <a href="/" class="upload-link">Upload More Groceries</a>
+        </div>
     </div>
 </body>
 </html>
